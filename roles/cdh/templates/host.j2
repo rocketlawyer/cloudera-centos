@@ -4,7 +4,9 @@
   "roleConfigGroupsRefNames": [
     "HDFS-1-GATEWAY-BASE",
     "HDFS-1-HTTPFS-BASE",
-    "HBASE-1-GATEWAY-BASE",
+    "HIVE-1-GATEWAY-BASE",
+    "OOZIE-1-OOZIE_SERVER-BASE",
+    "SPARK_ON_YARN-1-GATEWAY-BASE",
     "YARN-1-GATEWAY-BASE" ]
 }, {
   "refName": "HostTemplate-Master1",
@@ -15,7 +17,7 @@
     "HDFS-1-JOURNALNODE-BASE",
     "HDFS-1-BALANCER-BASE",
     "ZOOKEEPER-1-SERVER-BASE",
-    "HBASE-1-GATEWAY-BASE" ]
+    "HIVE-1-GATEWAY-BASE" ]
 }, {
   "refName": "HostTemplate-Master2",
   "cardinality": 1,
@@ -24,14 +26,18 @@
     "HDFS-1-FAILOVERCONTROLLER-BASE",
     "HDFS-1-JOURNALNODE-BASE",
     "ZOOKEEPER-1-SERVER-BASE",
-    "HBASE-1-MASTER-BASE" ]
+    "HIVE-1-HIVESERVER2-BASE",
+    "HIVE-1-HIVEMETASTORE-BASE",
+    "HIVE-1-GATEWAY-BASE",
+    "SPARK_ON_YARN-1-GATEWAY-BASE" ]
 }, {
   "refName": "HostTemplate-Master3",
   "cardinality": 1,
   "roleConfigGroupsRefNames": [
     "HDFS-1-JOURNALNODE-BASE",
     "ZOOKEEPER-1-SERVER-BASE",
-    "HBASE-1-MASTER-BASE",
+    "HIVE-1-GATEWAY-BASE",
+    "SPARK_ON_YARN-1-SPARK_YARN_HISTORY_SERVER-BASE",
     "YARN-1-JOBHISTORY-BASE",
     "YARN-1-RESOURCEMANAGER-BASE" ]
 }, {
@@ -39,7 +45,5 @@
   "cardinality": 3,
   "roleConfigGroupsRefNames": [
     "HDFS-1-DATANODE-BASE",
-    "HBASE-1-HBASETHRIFTSERVER-BASE",
-    "HBASE-1-REGIONSERVER-BASE",
-    "YARN-1-NODEMANAGER-BASE",
+    "YARN-1-NODEMANAGER-BASE" ]
 } ]

@@ -13,6 +13,12 @@ cdh_services:
     dfs_name_dir_list: /dfs/nn
     dfs_journalnode_edits_dir: /dfs/jn
 
+  - type: hive
+
+  - type: oozie
+
+  - type: spark
+
   - type: yarn
     yarn_nodemanager_local_dirs: /tmp/nm
     yarn_nodemanager_log_dirs: /var/log/nm

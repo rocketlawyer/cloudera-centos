@@ -13,4 +13,3 @@ scm_products:
   - product: CDH
     version: 5.11.2-1.cdh5.11.2.p0.4
 
-
