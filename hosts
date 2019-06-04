@@ -1,0 +1,34 @@
+[scm_server]
+rlcdh101-cdhadmin-01.us-west1-b.c.rocketlawyer1011.internal     license_file=/path/to/cloudera_license.txt
+
+[db_server]
+rlcdh101-cdhadmin-02.us-west1-b.c.rocketlawyer1011.internal
+
+[utility_servers:children]
+scm_server
+db_server
+
+[gateway_servers]
+rlcdh101-cdhadmin-01.us-west1-b.c.rocketlawyer1011.internal     host_template=HostTemplate-Gateway role_ref_names=HDFS-HTTPFS-1
+
+[master_servers]
+rlcdh101-cdhadmin-02.us-west1-b.c.rocketlawyer1011.internal     host_template=HostTemplate-Master1
+rlcdh101-cdhdata-01.us-west1-b.c.rocketlawyer1011.internal     host_template=HostTemplate-Master2
+rlcdh101-cdhdata-02.us-west1-b.c.rocketlawyer1011.internal     host_template=HostTemplate-Master3
+
+[worker_servers]
+rlcdh101-cdhdata-01.us-west1-b.c.rocketlawyer1011.internal
+rlcdh101-cdhdata-02.us-west1-b.c.rocketlawyer1011.internal
+rlcdh101-cdhdata-03.us-west1-b.c.rocketlawyer1011.internal
+
+[worker_servers:vars]
+host_template=HostTemplate-Workers
+
+[cdh_servers:children]
+utility_servers
+gateway_servers
+master_servers
+worker_servers
+
+[all:vars]
+ansible_user=pythian
