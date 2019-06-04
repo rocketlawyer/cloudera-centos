@@ -1,0 +1,20 @@
+---
+- name: Ensure libselinux-python is installed.
+  yum: 
+    name: libselinux-python
+
+- name: Check the selinux status.
+  command: getenforce
+  register: result
+  changed_when: False
+
+- name: Ensure selinux is disabled.
+  command: setenforce 0
+  changed_when: ("Disabled" not in result.stdout) and ("Permissive" not in result.stdout)
+  when: selinux_mode == 'disabled'
+
+- name: Modify selinux mode permanently.
+  lineinfile:
+    dest: /etc/selinux/config
+    regexp: "^SELINUX=.*"
+    line: "SELINUX={{ selinux_mode }}"

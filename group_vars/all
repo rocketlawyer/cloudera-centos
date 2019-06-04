@@ -1,0 +1,10 @@
+---
+
+ansible_become: true
+tmp_dir: /tmp
+
+krb5_kdc_type: none
+selinux_mode: disabled
+
+#ansible_ssh_common_args: ' -A '
+

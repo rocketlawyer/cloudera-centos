@@ -1,0 +1,32 @@
+make sure you install cm api pip module ON THE ANSIBLE HOST
+sudo pip install cm-api
+
+make sure you shutoff firewalld
+systemctl stop firewalld
+systemctl disable firewalld
+
+cdh-manager: 192.168.0.137
+cdh-node-1: 192.168.0.138
+cdh-node-2: 192.168.0.139
+
+ansible-playbook -i ./ansible_hosts ./site.yml
+
+
+centos6- doesn't work.
+on all hosts before install
+
+give it a location for the license file - or it will fail. should skip to trial
+
+remove KDC section from hosts file, don't just leave it empty
+
+
+install centos6
+
+copy root key over
+ifup eth0 (centos on vbox doesn't automatically)
+ip addr
+disable selinux
+/etc/selinux/config
+add ifup eth0 to rc.local
+
+
