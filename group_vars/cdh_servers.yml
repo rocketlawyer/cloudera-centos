@@ -12,8 +12,10 @@ cdh_services:
     fs_checkpoint_dir_list: /dfs/snn
     dfs_name_dir_list: /dfs/nn
     dfs_journalnode_edits_dir: /dfs/jn
+    namenode_java_heapsize: 4294967296
 
   - type: hive
+    spark_executor_cores: 4
 
   - type: oozie
 
