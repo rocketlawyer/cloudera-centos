@@ -15,7 +15,6 @@ cdh_services:
     namenode_java_heapsize: 4294967296
 
   - type: hive
-    spark_executor_cores: 4
 
   - type: oozie
 
