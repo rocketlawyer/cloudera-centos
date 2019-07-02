@@ -5,6 +5,7 @@ scm_hostname: "{{ hostvars[groups['scm_server'][0]]['inventory_hostname'] }}"
 
 cdh_version: 5.11.2
 cluster_display_name: cluster_1
+cluster_name: cluster_1
 
 cdh_services:
   - type: hdfs
@@ -13,6 +14,8 @@ cdh_services:
     dfs_name_dir_list: /dfs/nn
     dfs_journalnode_edits_dir: /dfs/jn
     namenode_java_heapsize: 4294967296
+
+  - type: hbase
 
   - type: hive
 
