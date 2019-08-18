@@ -1,24 +1,26 @@
 [scm_server]
-rlcdh101-cdhadmin-01.us-west1-b.c.rocketlawyer1011.internal     license_file=/path/to/cloudera_license.txt
+rlcdh101-cdhadmin-01.c.rl-us-cloudera-dr.internal     license_file=/path/to/cloudera_license.txt
 
 [db_server]
-rlcdh101-cdhadmin-01.us-west1-b.c.rocketlawyer1011.internal
+rlcdh101-cdhadmin-01.c.rl-us-cloudera-dr.internal
 
 [utility_servers:children]
 scm_server
 db_server
 
 [gateway_servers]
-rlcdh101-cdhadmin-01.us-west1-b.c.rocketlawyer1011.internal     host_template=HostTemplate-Gateway role_ref_names=HDFS-HTTPFS-1
+rlcdh101-cdhadmin-01.c.rl-us-cloudera-dr.internal     host_template=HostTemplate-Gateway role_ref_names=HDFS-HTTPFS-1
 
 [master_servers]
-rlcdh101-cdhdata-01.us-west1-b.c.rocketlawyer1011.internal     host_template=HostTemplate-Master1
-rlcdh101-cdhdata-02.us-west1-b.c.rocketlawyer1011.internal     host_template=HostTemplate-Master2
-rlcdh101-cdhdata-03.us-west1-b.c.rocketlawyer1011.internal     host_template=HostTemplate-Master3
+rlcdh101-cdhadmin-02.c.rl-us-cloudera-dr.internal     host_template=HostTemplate-Master1
+rlcdh101-cdhadmin-03.c.rl-us-cloudera-dr.internal     host_template=HostTemplate-Master2
+rlcdh101-cdhadmin-04.c.rl-us-cloudera-dr.internal     host_template=HostTemplate-Master3
 
 [worker_servers]
-rlcdh101-cdhdata-04.us-west1-b.c.rocketlawyer1011.internal
-rlcdh101-cdhdata-05.us-west1-b.c.rocketlawyer1011.internal
+rlcdh101-cdhdata-01.c.rl-us-cloudera-dr.internal
+rlcdh101-cdhdata-02.c.rl-us-cloudera-dr.internal
+rlcdh101-cdhdata-03.c.rl-us-cloudera-dr.internal
+rlcdh101-cdhdata-04.c.rl-us-cloudera-dr.internal
 
 [worker_servers:vars]
 host_template=HostTemplate-Workers
