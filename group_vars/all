@@ -6,5 +6,8 @@ tmp_dir: /tmp
 krb5_kdc_type: none
 selinux_mode: disabled
 
+storage_mount: /mnt/fuse_stor
+backup_file: testfile.txt
+
 #ansible_ssh_common_args: ' -A '
 
