@@ -1,0 +1,35 @@
+---
+
+- include_vars: ../../../group_vars/cdh_servers.yml
+- include_vars: ../../../group_vars/scm_server.yml
+- include_vars: ../../../group_vars/db_server.yml
+
+# Check whether the cluster build command completed 
+- name: Check whether cluster command completed 
+  uri:
+    url: "http://rlcdh101-cdhadmin-01.c.rl-us-cloudera-dr.internal:7180/api/v19/clusters/cluster_1"
+#    url: "{{ cm_api_url }}/clusters/{{ cluster_display_name }}"
+    method: GET
+    status_code: 200,404
+    force_basic_auth: yes
+    user: "{{ scm_default_user }}"
+    password: "{{ scm_default_pass }}"
+    return_content: yes
+    body_format: json
+  register: result
+  until: result.json.entityStatus == "GOOD_HEALTH"
+  retries: 15 
+  delay: 30
+
+- set_fact: cluster_command={{ 'True' if result.json.entityStatus == "GOOD_HEALTH" else 'False' }}
+
+# Restore hdfs backup files from gcs mount
+- name: Restore hdfs backup from gcs mount
+  tasks:
+     - name: Running hdfs command
+       command: hadoop fs -copyFromLocal /mnt/backup/ /
+  become: yes
+  when: cluster_command == True
+
+- debug: msg="Cluster '{{ cluster_display_name }}' unhealthy - {{ cluster_command }}"
+  when: cluster_command == False
