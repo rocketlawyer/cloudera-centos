@@ -79,15 +79,6 @@ By default Ansible will connect to the remote hosts using the current user (as S
 ansible_user=ec2-user
 ```
 
-AWS users can use Ansible’s ``--private-key`` option to authenticate using a PEM file instead of SSH keys.
-
-# Enabling Kerberos
-
-The playbook can install a local MIT KDC and configure Hadoop Security. To enable Hadoop Security:
-
-* Specify the '[krb5_server]' host in the inventory (see above)
-* Set 'krb5_kdc_type' to 'mit' in ``group_vars/krb5_server.yml``
-
 # Overriding CDH service/role configuration
 
 The playbook uses [Cloudera Manager Templates](https://www.cloudera.com/documentation/enterprise/latest/topics/install_cluster_template.html) to provision a cluster.
@@ -113,9 +104,3 @@ For example ``roles/cdh/templates/hdfs.j2``:
   "variable": "DATANODE_JAVA_HEAPSIZE"
 }
 ```
-
-# How to contribute
-
-* Fork the repo and create a topic branch
-* Push commits to your repo
-* Create a pull request!
