@@ -64,10 +64,8 @@ worker_servers
 * Run playbook
  
 ```shell
-$ ansible-playbook -i ~/ansible_hosts cloudera-playbook/site.yml
+$ ansible-playbook -i hosts site.yml
     
--i INVENTORY
-   inventory host path or comma separated host list (default=/etc/ansible/hosts)
 ```
 
 Ansible communicates with the hosts defined in the inventory over SSH. It assumes you’re using SSH keys to authenticate so your public SSH key should exist in ``authorized_keys`` on those hosts. Your user will need sudo privileges to install the required packages.
@@ -76,7 +74,7 @@ By default Ansible will connect to the remote hosts using the current user (as S
 
 ```ini
 [all:vars]
-ansible_user=ec2-user
+ansible_user=pythian
 ```
 
 # Overriding CDH service/role configuration
@@ -103,4 +101,12 @@ For example ``roles/cdh/templates/hdfs.j2``:
   "name": "datanode_java_heapsize",
   "variable": "DATANODE_JAVA_HEAPSIZE"
 }
+```
+
+# Backup Restore
+
+Default location of backup is at /mnt/fuse_stor/testfile.txt. Variable can be found at
+
+```
+backup_file: testfile.txt
 ```
