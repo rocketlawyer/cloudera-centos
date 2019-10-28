@@ -24,8 +24,9 @@
 
 # Restore hdfs backup files from gcs mount
 - name: Restore hdfs backup from gcs mount
-  command: sudo -u hdfs hadoop fs -copyFromLocal "{{ storage_mount }}"/"{{ backup_file }}" /
+  command: hadoop fs -copyFromLocal "{{ storage_mount }}"/"{{ backup_file }}" /
   become: yes
+  become_user: hdfs
   when: cluster_command == True
 
 - debug: msg="Cluster '{{ cluster_display_name }}' unhealthy - {{ cluster_command }}"
