@@ -67,7 +67,7 @@
     - cdh
   tags: cluster_template
 
-- name: Import Data from Backup
+- name: Test Import Data from Test Backup
   hosts: scm_server
   roles:
     - dataimport
